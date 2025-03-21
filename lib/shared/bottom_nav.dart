@@ -19,6 +19,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
+      labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
       selectedIndex: widget.selectedIndex,
       onDestinationSelected: widget.onItemTapped,
       destinations: const <NavigationDestination>[
@@ -39,7 +40,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           label: 'Inventory',
         ),
         NavigationDestination(
-          icon: Icon(FontAwesomeIcons.heart),
+          icon: Icon(FontAwesomeIcons.solidHeart),
           label: 'Favorites',
         ),
       ],
