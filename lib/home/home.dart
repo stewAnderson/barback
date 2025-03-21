@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projects/shared/bottom_nav.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +7,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const BottomNavBar(),
       body: Padding(
         padding: const EdgeInsets.all(20.0), // Set padding to 20
         child: Column(

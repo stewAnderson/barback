@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projects/shared/bottom_nav.dart';
 
 class RecipeScreen extends StatelessWidget {
   const RecipeScreen({super.key});
@@ -8,7 +7,9 @@ class RecipeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      bottomNavigationBar: const BottomNavBar(),
+      body: const Center(
+        child: Text('Recipe Screen'),
+      ),
     );
   }
 }

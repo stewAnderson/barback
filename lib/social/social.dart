@@ -8,7 +8,6 @@ class SocialScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      bottomNavigationBar: const BottomNavBar(),
       body: const Center(
         child: Text('Social Screen'),
       ), 
