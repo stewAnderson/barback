@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "303807188594",
+    "project_id": "barback-a5afe",
+    "storage_bucket": "barback-a5afe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303807188594:android:8888c2602fa46763e87ceb",
+        "android_client_info": {
+          "package_name": "io.stewart.flutter_projects"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303807188594-uqjjst80gp6n4pv2v7o8nas0ru4umr6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEHi2JOTmmic-h2-COB2vmhCeTD_jN23E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303807188594-uqjjst80gp6n4pv2v7o8nas0ru4umr6j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "303807188594-gk6j7gnae0r21pssivdaa4gf3fpc8n4v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.stewart.barback"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
