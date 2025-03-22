@@ -1,15 +1,76 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_projects/inventory/recipe_list.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_projects/favorites/favorites.dart';
 import 'package:flutter_projects/home/home.dart';
 import 'package:flutter_projects/inventory/inventory.dart';
-import 'package:flutter_projects/recipe/recipe.dart';
 import 'package:flutter_projects/search/search.dart';
 import 'package:flutter_projects/social/social.dart';
+import 'package:flutter_projects/shared/bottom_nav.dart';
 
-var appRoutes = {
-  '/': (context) => const HomeScreen(),
-  '/inventory': (context) => const InventoryScreen(),
-  '/recipe': (context) => const RecipeScreen(),
-  '/social': (context) => const SocialScreen(),
-  '/favorites': (context) => const FavoritesScreen(),
-  '/search': (context) => const SearchScreen(),
-};
+final router = GoRouter(
+  initialLocation: '/',
+  routes: [
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        return Scaffold(
+          body: navigationShell,
+          bottomNavigationBar: BottomNav(navigationShell: navigationShell),
+        );
+      },
+      branches: <StatefulShellBranch>[
+        StatefulShellBranch(
+          navigatorKey: GlobalKey<NavigatorState>(),
+          routes: <RouteBase>[
+            GoRoute(
+              path: '/search',
+              builder: (context, state) => const SearchScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: GlobalKey<NavigatorState>(),
+          routes: <RouteBase>[
+            GoRoute(
+              path: '/social',
+              builder: (context, state) => const SocialScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: GlobalKey<NavigatorState>(),
+          routes: <RouteBase>[
+            GoRoute(
+              path: '/',
+              builder: (context, state) => const HomeScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: GlobalKey<NavigatorState>(),
+          routes: <RouteBase>[
+            GoRoute(
+              path: '/inventory',
+              builder: (context, state) => const InventoryScreen(),
+              routes: [
+                GoRoute(
+                  path: 'recipe_list',
+                  builder: (context, state) => const RecipeListScreen(),
+                ),
+              ],
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: GlobalKey<NavigatorState>(),
+          routes: <RouteBase>[
+            GoRoute(
+              path: '/favorites',
+              builder: (context, state) => const FavoritesScreen(),
+            ),
+          ],
+        ),
+      ],
+    ),
+  ],
+);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projects/shared/search_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -47,21 +48,8 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search...',
-                  hintStyle: const TextStyle(
-                      color: Colors.grey), // Change hint text color
-                  prefixIcon: const Icon(FontAwesomeIcons.magnifyingGlass),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: const BorderSide(
-                        color: Color.fromARGB(255, 211, 211, 211)),
-                  ),
-                ),
-              ),
-            ),
+                padding: const EdgeInsets.only(top: 20.0),
+                child: const MySearchBar(hintText: 'Try something new?',)),
             Container(
               padding: const EdgeInsets.only(top: 20.0),
               child: Column(
