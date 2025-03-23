@@ -1,0 +1,45 @@
+{
+    "recipes": {
+        "recipe1": {
+            "name": "Mojito",
+            "ingredients": [
+                "Mint leaves",
+                "Lime",
+                "Sugar",
+                "White rum",
+                "Soda water"
+            ],
+            "instructions": [
+                "Muddle mint leaves with lime and sugar.",
+                "Add rum and top with soda water."
+            ]
+        },
+        "recipe2": {
+            "name": "Margarita",
+            "ingredients": [
+                "Tequila",
+                "Lime juice",
+                "Triple sec",
+                "Salt"
+            ],
+            "instructions": [
+                "Shake tequila, lime juice, and triple sec with ice.",
+                "Serve in a salt-rimmed glass."
+            ] 
+        },
+        "recipe3": {
+            "name": "Aperol Spritz",
+            "ingredients": [
+                "Aperol",
+                "Sparkling Wine",
+                "Soda"
+            ],
+            "instructions": [
+                "Add Aperol to wine glass.",
+                "Add sparkling wine.",
+                "Fill glass with ice",
+                "Top off with soda"
+            ]
+        }
+    }
+}

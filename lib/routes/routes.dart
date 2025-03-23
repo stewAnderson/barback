@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/inventory/recipe_list.dart';
+import 'package:flutter_projects/inventory/recipe.dart'; // Adjust the import path as necessary
 import 'package:go_router/go_router.dart';
 import 'package:flutter_projects/favorites/favorites.dart';
 import 'package:flutter_projects/home/home.dart';
@@ -56,6 +57,14 @@ final router = GoRouter(
                 GoRoute(
                   path: 'recipe_list',
                   builder: (context, state) => const RecipeListScreen(),
+                ),
+                GoRoute(
+                  path: 'recipe',
+                  builder: (context, state) {
+                    final recipeName = state.extra as String?;
+                    return RecipeScreen(
+                        recipeName: recipeName ?? 'Unknown Recipe');
+                  },
                 ),
               ],
             ),

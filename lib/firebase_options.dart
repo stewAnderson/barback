@@ -55,6 +55,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '303807188594',
     projectId: 'barback-a5afe',
     storageBucket: 'barback-a5afe.firebasestorage.app',
+    databaseURL: "https://barback-a5afe-default-rtdb.firebaseio.com/"
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
@@ -67,4 +68,5 @@ class DefaultFirebaseOptions {
     iosClientId: '303807188594-t1aq10tmtmgq7jdqjinjb2ejimooghmq.apps.googleusercontent.com',
     iosBundleId: 'io.stewart.flutterProjects',
   );
+
 }
