@@ -70,8 +70,12 @@ class HomeScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           const SizedBox(
-                            height: 200,
+                            height: 170.0,
                             width: double.infinity,
+                            child: Image(
+                              image: AssetImage('lib/assets/images/sour.jpg'),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -79,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                               const Text(
                                 'Classic Whisky Sour',
                                 style: TextStyle(
-                                  fontSize: 16.0,
+                                  fontSize: 15.0,
                                   color: Colors.black,
                                 ),
                               ),
@@ -87,6 +91,7 @@ class HomeScreen extends StatelessWidget {
                                 onPressed:
                                     () {}, // Empty function for placeholder
                                 style: OutlinedButton.styleFrom(
+
                                   backgroundColor:
                                       Colors.white, // Button background color
                                   side: const BorderSide(

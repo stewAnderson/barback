@@ -61,9 +61,8 @@ final router = GoRouter(
                 GoRoute(
                   path: 'recipe',
                   builder: (context, state) {
-                    final recipeName = state.extra as String?;
-                    return RecipeScreen(
-                        recipeName: recipeName ?? 'Unknown Recipe');
+                    final recipeName = state.extra as String;
+                    return RecipeScreen(recipeName: recipeName);
                   },
                 ),
               ],

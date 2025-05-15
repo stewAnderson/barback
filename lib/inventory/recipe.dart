@@ -1,6 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_projects/models/recipe.dart';
 
 class RecipeScreen extends StatefulWidget {
   final String recipeName;
@@ -13,7 +13,7 @@ class RecipeScreen extends StatefulWidget {
 
 class _RecipeScreenState extends State<RecipeScreen> {
   final DatabaseReference db = FirebaseDatabase.instance.ref();
-  Map<String, dynamic>? recipe;
+  Recipe? recipe;
   bool isLoading = true;
 
   @override
@@ -24,21 +24,24 @@ class _RecipeScreenState extends State<RecipeScreen> {
 
   Future<void> fetchRecipe() async {
     try {
-      final snapshot = await db
-          .child('recipes')
-          .orderByChild('name')
-          .equalTo(widget.recipeName)
-          .limitToFirst(1)
-          .get();
+      final snapshot = await db.child('recipes').get();
       if (snapshot.exists) {
         final Map<dynamic, dynamic> recipesMap =
             snapshot.value as Map<dynamic, dynamic>;
-        final recipeDetails =
-            Map<String, dynamic>.from(recipesMap.values.first);
-        setState(() {
-          recipe = recipeDetails;
-          isLoading = false;
-        });
+        final recipeEntry = recipesMap.values.firstWhere(
+          (r) => r['name'] == widget.recipeName,
+          orElse: () => null,
+        );
+        if (recipeEntry != null) {
+          setState(() {
+            recipe = Recipe.fromMap(Map<String, dynamic>.from(recipeEntry));
+            isLoading = false;
+          });
+        } else {
+          setState(() {
+            isLoading = false;
+          });
+        }
       } else {
         setState(() {
           isLoading = false;
@@ -78,24 +81,48 @@ class _RecipeScreenState extends State<RecipeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(recipe!['name']),
+        title: const Text("Recipe Details"),
       ),
-      body: Padding(
+      body: RecipeDetail(recipe: recipe!),
+    );
+  }
+}
+
+// Widget that displays a Recipe model (no Scaffold or AppBar)
+class RecipeDetail extends StatelessWidget {
+  final Recipe recipe;
+
+  const RecipeDetail({super.key, required this.recipe});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 400.0,
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const SizedBox(height: 16.0),
             Text(
-              'Ingredients: ${recipe!['ingredients'].join(', ')}',
-              // style: Theme.of(context).textTheme.bodyText1,
+              recipe.name,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
-            const SizedBox(height: 16.0),
             Text(
-              'Instructions: ${recipe!['instructions']}',
-              // style: Theme.of(context).textTheme.bodyText1,
+              'Ingredients:',
+              style: Theme.of(context).textTheme.titleSmall,
             ),
-            // Add more UI elements here as needed
+            ...recipe.ingredients
+                .map<Widget>((ingredient) => Text('- $ingredient')),
+            Text(
+              'Instructions:',
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            ...recipe.instructions is List
+                ? (recipe.instructions as List)
+                    .map<Widget>((step) => Text('- $step'))
+                    .toList()
+                : [Text(recipe.instructions.toString())],
           ],
         ),
       ),

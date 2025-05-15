@@ -40,6 +40,23 @@
                 "Fill glass with ice",
                 "Top off with soda"
             ]
+        },
+        "recipe4": {
+            "name": "Old Fashioned",
+            "ingredients": [
+                "Bourbon",
+                "Sugar",
+                "Angostura bitters",
+                "Orange peel"
+            ],
+            "instructions": [
+                "Add sugar to mixing glass.",
+                "Add 4 dashes of bitters to the sugar with a small amount of soda.",
+                "Stir sugar-bitters mixture until sugar is dissolved.",
+                "Add bourbon and ice to the mixing glass.",
+                "Stir until cold",
+                "Strain over a king cube in a rocks glass."
+            ]
         }
     }
 }
